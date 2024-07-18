@@ -1,0 +1,10 @@
+.header {
+  height: 200px;
+  @apply bg-gray-700;
+  @apply flex justify-center items-center;
+}
+
+.header img {
+  width: 7.875rem;
+  @apply max-h-12;
+}
