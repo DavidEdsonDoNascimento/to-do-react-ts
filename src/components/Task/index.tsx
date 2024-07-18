@@ -1,17 +1,26 @@
 import { Trash } from 'phosphor-react';
+import styles from './styles.module.css';
+import { ITask } from '../../interfaces';
 
-interface ITaskProps {
-	content: string;
+interface ITaskProps extends ITask {
+	onDeleteTask: (taskId: string) => void;
 }
-export const Task = ({ content }: ITaskProps) => {
+
+export const Task = ({ id, content, completed, onDeleteTask }: ITaskProps) => {
 	const handleDeleteTask = () => {
-		console.log('Deletando tarefa:', content); // Simulando a exclusão de uma tarefa
-		// Implementar a lógica de exclusão na sua API ou banco de dados.
+		onDeleteTask(id);
 	};
 
 	return (
-		<div className='bg-gray-400'>
-			{content}
+		<div className={styles.taskContainer}>
+			<div className={styles.taskContentContainer}>
+				<input
+					type='checkbox'
+					className={styles.taskCheckbox}
+					checked={completed}
+				/>
+				<p>{content}</p>
+			</div>
 			<button title='Deletar tarefa' onClick={handleDeleteTask}>
 				<Trash size={24} />
 			</button>
