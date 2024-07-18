@@ -1,0 +1,15 @@
+.informationManagerContainer {
+	@apply flex flex-row justify-between;
+}
+
+.managedInformation {
+	@apply flex flex-row gap-2;
+}
+
+.managedInformationText {
+	@apply font-bold text-sm text-blue;
+}
+
+.managedInformationCount {
+	@apply font-bold text-xs;
+}

@@ -5,6 +5,8 @@ import { v4 as uuid } from 'uuid';
 
 import './App.css';
 import { ITask } from './interfaces';
+import { InformationManager } from './components/InformationManager';
+import { ICompletedTask } from './interfaces/completedTask';
 
 export const App = () => {
 	console.log('teste');
@@ -20,6 +22,18 @@ export const App = () => {
 		event.target.setCustomValidity('preencha o conteúdo da tarefa');
 	};
 
+	const completedTask = ({ taskId, completed }: ICompletedTask) => {
+		const tasks = toDoList.filter((item) => item.id !== taskId);
+		const task = toDoList.find((item) => item.id === taskId)!;
+		setToDoList([
+			...tasks,
+			{
+				...task,
+				completed,
+			},
+		]);
+	};
+
 	const handleCreateTask = (event: FormEvent) => {
 		event.preventDefault();
 		setToDoList([
@@ -27,8 +41,15 @@ export const App = () => {
 			{
 				id: uuid(),
 				content: newTaskText,
+				completed: false,
 			},
 		]);
+		setNewTaskText('');
+	};
+
+	const metrics = {
+		createdTasksCount: toDoList.length,
+		completedTasksCount: toDoList.filter((item) => item.completed).length,
 	};
 
 	const deleteTask = (taskId: string) => {
@@ -63,18 +84,10 @@ export const App = () => {
 						</button>
 					</form>
 					<div className='tasks-container'>
-						<div className='information-manager-container'>
-							<div className='managed-information'>
-								<span className='managed-information-text'>
-									Tarefas criadas
-								</span>
-								<span className='managed-information-count'>5</span>
-							</div>
-							<div className='managed-information'>
-								<span className='managed-information-text'>Concluídas</span>
-								<span className='managed-information-count'>2 de 5</span>
-							</div>
-						</div>
+						<InformationManager
+							createdTasksCount={metrics.createdTasksCount}
+							completedTasksCount={metrics.completedTasksCount}
+						/>
 						{toDoList.map((task) => (
 							<Task
 								key={task.id}
@@ -82,6 +95,7 @@ export const App = () => {
 								content={task.content}
 								completed={task.completed}
 								onDeleteTask={deleteTask}
+								onCompletedTask={completedTask}
 							/>
 						))}
 					</div>

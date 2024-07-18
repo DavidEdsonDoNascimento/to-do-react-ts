@@ -1,5 +1,5 @@
 .main-container {
-	@apply flex flex-col justify-center items-center gap-8;
+	@apply flex flex-col justify-center items-center gap-12;
 }
 
 .add-task-field {
@@ -31,20 +31,5 @@
 .tasks-container {
 	width: 46rem;
 	height: 28.1875rem;
-}
-
-.information-manager-container {
-	@apply flex flex-row justify-between;
-}
-
-.managed-information {
-	@apply flex flex-row gap-2;
-}
-
-.managed-information-text {
-	@apply font-bold text-sm;
-}
-
-.managed-information-count {
-	@apply font-bold text-xs;
+	@apply flex flex-col gap-6;
 }
