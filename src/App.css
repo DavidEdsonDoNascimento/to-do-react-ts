@@ -33,3 +33,15 @@
 	height: 28.1875rem;
 	@apply flex flex-col gap-6;
 }
+
+@media (max-width: 768px) {
+  html {
+    font-size: 87.5%; /* regra de 3 pra ser 14px ja que o 100% é 16px pra 1rem */
+  }
+  .add-task-container {
+  	@apply w-96;
+  }
+  .tasks-container {
+  	@apply w-screen p-4;
+  }
+}

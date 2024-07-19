@@ -60,7 +60,7 @@ export const App = () => {
 	const isNewTaskEmpty = newTaskText.trim() === '';
 
 	return (
-		<div>
+		<>
 			<Header />
 			<div>
 				<main className='main-container'>
@@ -104,6 +104,6 @@ export const App = () => {
 					</div>
 				</main>
 			</div>
-		</div>
+		</>
 	);
 };
