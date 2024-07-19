@@ -12,14 +12,14 @@ export const InformationManager = ({
 	return (
 		<div className={styles.informationManagerContainer}>
 			<div className={styles.managedInformation}>
-				<span className={styles.managedInformationText}>Tarefas criadas</span>
-				<span className={styles.managedInformationCount}>
+				<span>Tarefas criadas</span>
+				<span>
 					{createdTasksCount}
 				</span>
 			</div>
 			<div className={styles.managedInformation}>
-				<span className={styles.managedInformationText}>Concluídas</span>
-				<span className={styles.managedInformationCount}>
+				<span>Concluídas</span>
+				<span>
 					{`${completedTasksCount} de ${createdTasksCount}`}
 				</span>
 			</div>

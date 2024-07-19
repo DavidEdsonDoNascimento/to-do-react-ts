@@ -44,7 +44,7 @@ export const Task = ({
 							<del>{content}</del>
 						</p>
 					) : (
-						<p className='text-sm'>{content}</p>
+						<p className='text-sm text-gray-100'>{content}</p>
 					)}
 				</label>
 			</div>

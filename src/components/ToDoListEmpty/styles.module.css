@@ -1,0 +1,17 @@
+.container {
+  @apply flex flex-col items-center justify-center;
+  @apply border-t rounded-lg border-gray-300 gap-4;
+  padding: 4rem;
+}
+
+.container img {
+  @apply w-14 h-14;
+}
+
+.textContainer > p { 
+  @apply text-gray-300;
+}
+
+.textContainer > p:first-of-type {
+  @apply font-bold;
+}

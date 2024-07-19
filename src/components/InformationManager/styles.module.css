@@ -6,10 +6,21 @@
 	@apply flex flex-row gap-2;
 }
 
-.managedInformationText {
-	@apply font-bold text-sm text-blue;
+.managedInformation > span:first-child {
+	@apply font-bold text-sm;
 }
 
-.managedInformationCount {
-	@apply font-bold text-xs;
+.managedInformation:first-child > span:first-child {
+	@apply text-blue;
+}
+
+.managedInformation:nth-child(2) > span:first-child {
+	@apply text-purple;
+}
+
+.managedInformation > span:nth-child(2) {
+	@apply flex items-center font-bold text-xs;
+	@apply rounded-full bg-gray-400 gap-2.5;
+	padding: 0.125rem 0.5rem;
+
 }

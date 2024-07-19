@@ -1,12 +1,11 @@
 import { PlusCircle } from 'phosphor-react';
-import { Header, Task } from './components';
+import { Header, Task, ToDoListEmpty, InformationManager } from './components';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { v4 as uuid } from 'uuid';
+import { ITask } from './interfaces';
+import { ICompletedTask } from './interfaces/completedTask';
 
 import './App.css';
-import { ITask } from './interfaces';
-import { InformationManager } from './components/InformationManager';
-import { ICompletedTask } from './interfaces/completedTask';
 
 export const App = () => {
 	console.log('teste');
@@ -70,6 +69,7 @@ export const App = () => {
 							type='text'
 							placeholder='Adicione uma nova tarefa'
 							className='add-task-field'
+							value={newTaskText}
 							onChange={handleTaskFieldChange}
 							onInvalid={handleNewTaskInvalid}
 							required
@@ -88,7 +88,8 @@ export const App = () => {
 							createdTasksCount={metrics.createdTasksCount}
 							completedTasksCount={metrics.completedTasksCount}
 						/>
-						{toDoList.map((task) => (
+						{
+							toDoList.length ? (toDoList.map((task) => (
 							<Task
 								key={task.id}
 								id={task.id}
@@ -97,7 +98,9 @@ export const App = () => {
 								onDeleteTask={deleteTask}
 								onCompletedTask={completedTask}
 							/>
-						))}
+							)
+						)) : <ToDoListEmpty /> 
+						}
 					</div>
 				</main>
 			</div>
